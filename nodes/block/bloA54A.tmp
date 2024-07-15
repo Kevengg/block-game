@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://b1sjqk60v4stc"]
+
+[ext_resource type="Material" uid="uid://rp3u3m6y6fj" path="res://etc/unknown.tres" id="1_b6cht"]
+[ext_resource type="Script" path="res://nodes/block/checks.gd" id="2_jw6hd"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_t846p"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pc0qb"]
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_kjoen"]
+
+[node name="block" type="StaticBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_b6cht")
+mesh = SubResource("BoxMesh_t846p")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_pc0qb")
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
+occluder = SubResource("BoxOccluder3D_kjoen")
+
+[node name="checks" type="Node3D" parent="."]
+script = ExtResource("2_jw6hd")
+
+[node name="X" type="RayCast3D" parent="checks"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+enabled = false
+
+[node name="-X" type="Marker3D" parent="checks"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+
+[node name="Y" type="Marker3D" parent="checks"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="-Y" type="Marker3D" parent="checks"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="Z" type="Marker3D" parent="checks"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="-Z" type="Marker3D" parent="checks"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)

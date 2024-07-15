@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkfsu5gso18s"]
+
+[ext_resource type="PackedScene" uid="uid://x23jl2ammydx" path="res://grid/grid.tscn" id="2_w4ydr"]
+
+[node name="Main" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.778966, 0.627066, 0, -0.627066, 0.778966, 0, 8.58642, 11.6485)
+
+[node name="Grid2" parent="." instance=ExtResource("2_w4ydr")]
+data = {
+"cells": PackedInt32Array(0, 65531, 0, 0, 65532, 0, 0, 65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 65533, 65531, 0, 65533, 65532, 0, 65533, 65533, 0, 65533, 65534, 0, 65533, 65535, 0, 65533, 0, 0, 65533, 1, 0, 65533, 2, 0, 3, 65531, 0, 3, 65532, 0, 3, 65533, 0, 3, 65534, 0, 3, 65535, 0, 3, 0, 0, 3, 1, 0, 3, 2, 0)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)

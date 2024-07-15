@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://c52vf56f26jac"]
+
+[ext_resource type="PackedScene" uid="uid://b1sjqk60v4stc" path="res://nodes/block/block.tscn" id="1_04aht"]
+[ext_resource type="Texture2D" uid="uid://bafyk1ec4pvr1" path="res://blocks/dirt/dirt.png" id="2_6lsbl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l6a6e"]
+albedo_texture = ExtResource("2_6lsbl")
+
+[sub_resource type="BoxMesh" id="BoxMesh_vbe54"]
+material = SubResource("StandardMaterial3D_l6a6e")
+subdivide_width = 4
+subdivide_height = 4
+subdivide_depth = 4
+
+[node name="dirt" instance=ExtResource("1_04aht")]
+
+[node name="MeshInstance3D" parent="." index="1"]
+mesh = SubResource("BoxMesh_vbe54")

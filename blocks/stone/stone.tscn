@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=3 uid="uid://btcdys8qix4fg"]
+
+[ext_resource type="PackedScene" uid="uid://b1sjqk60v4stc" path="res://nodes/block/block.tscn" id="1_7e0a5"]
+[ext_resource type="Texture2D" uid="uid://20gcn6k3dev7" path="res://blocks/stone/stone.png" id="2_nf67o"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g358l"]
+albedo_texture = ExtResource("2_nf67o")
+uv1_scale = Vector3(2, 2, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_i0kxv"]
+material = SubResource("StandardMaterial3D_g358l")
+subdivide_width = 4
+subdivide_height = 4
+subdivide_depth = 4
+
+[sub_resource type="Skin" id="Skin_cd6nj"]
+
+[node name="stone" instance=ExtResource("1_7e0a5")]
+
+[node name="MeshInstance3D" parent="." index="1"]
+mesh = SubResource("BoxMesh_i0kxv")
+skin = SubResource("Skin_cd6nj")

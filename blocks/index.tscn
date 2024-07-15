@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgdrryy104si6"]
+
+[ext_resource type="PackedScene" uid="uid://c52vf56f26jac" path="res://blocks/dirt/dirt.tscn" id="1_tvkcy"]
+[ext_resource type="PackedScene" uid="uid://btcdys8qix4fg" path="res://blocks/stone/stone.tscn" id="2_xefsg"]
+
+[node name="Index" type="Node"]
+
+[node name="dirt" parent="." instance=ExtResource("1_tvkcy")]
+
+[node name="stone" parent="." instance=ExtResource("2_xefsg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)

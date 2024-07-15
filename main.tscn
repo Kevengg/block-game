@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://bkfsu5gso18s"]
+
+[ext_resource type="Script" path="res://external/camera.gd" id="1_gm37i"]
+[ext_resource type="Script" path="res://main.gd" id="1_lucue"]
+[ext_resource type="PackedScene" uid="uid://x23jl2ammydx" path="res://grid/grid.tscn" id="2_w4ydr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1hmr7"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_4foi1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xaoqj"]
+
+[sub_resource type="TextMesh" id="TextMesh_8erch"]
+material = SubResource("StandardMaterial3D_xaoqj")
+text = "this way up"
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_lucue")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.2822, 25.5243, 34.8338)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("BoxShape3D_1hmr7")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="RigidBody3D"]
+mesh = SubResource("BoxMesh_4foi1")
+skeleton = NodePath("../..")
+
+[node name="Grid" parent="." instance=ExtResource("2_w4ydr")]
+mapSize = 60
+minHeight = -60
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.533319, 0.845914, 0, -0.845914, 0.533319, 0, 4.16976, 7.79539)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(11.5749, 0, 0, 0, 8.38811, 0, 0, 0, 1, 0, 4.49198, 0)
+mesh = SubResource("TextMesh_8erch")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.2743, 0.670625, 29.1435)
+fov = 86.9938
+script = ExtResource("1_gm37i")
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
+target_position = Vector3(0, 0, -4)

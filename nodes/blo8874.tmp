@@ -1,0 +1,66 @@
+[gd_scene load_steps=5 format=3 uid="uid://b1sjqk60v4stc"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_t846p"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pc0qb"]
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_kjoen"]
+
+[sub_resource type="GDScript" id="GDScript_2lphw"]
+script/source = "extends Node3D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	var T = Thread.new()
+	T.start(checkPoints())
+	pass 
+	
+	
+func checkPoints():
+	var points = get_children()
+	
+	
+	for point in points:
+		var space_state = get_world_3d().direct_space_state
+		var result = space_state.intersect_point(point)
+		if (Array.lenth(result)):
+			get_parent().find_child(\"MeshInstance3D\").material_override = null
+		
+		
+	pass
+
+
+"
+
+[node name="block" type="StaticBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_t846p")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_pc0qb")
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
+occluder = SubResource("BoxOccluder3D_kjoen")
+
+[node name="checks" type="Node3D" parent="."]
+script = SubResource("GDScript_2lphw")
+
+[node name="X" type="Marker3D" parent="checks"]
+transform = Transform3D(1, 0, 0, 0, 0.999962, -0.00872654, 0, 0.00872654, 0.999962, 1, 0, 0)
+
+[node name="-X" type="Marker3D" parent="checks"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+
+[node name="Y" type="Marker3D" parent="checks"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="-Y" type="Marker3D" parent="checks"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="Z" type="Marker3D" parent="checks"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="-Z" type="Marker3D" parent="checks"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)

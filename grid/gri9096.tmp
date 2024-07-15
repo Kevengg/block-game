@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://x23jl2ammydx"]
+
+[ext_resource type="Script" path="res://grid/gridMap.gd" id="1_hyn6s"]
+[ext_resource type="Script" path="res://grid/grid.gd" id="2_hv120"]
+
+[sub_resource type="MeshLibrary" id="MeshLibrary_vpfu5"]
+script = ExtResource("1_hyn6s")
+
+[node name="Grid" type="GridMap"]
+mesh_library = SubResource("MeshLibrary_vpfu5")
+cell_size = Vector3(1, 1, 1)
+data = {
+"cells": PackedInt32Array(65535, 0, 0, 65535, 65535, 0, 0, 65535, 0, 0, 0, 0)
+}
+script = ExtResource("2_hv120")
+metadata/_editor_floor_ = Vector3(0, -1, 0)

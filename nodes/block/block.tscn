@@ -1,0 +1,66 @@
+[gd_scene load_steps=6 format=3 uid="uid://b1sjqk60v4stc"]
+
+[ext_resource type="Material" uid="uid://rp3u3m6y6fj" path="res://etc/unknown.tres" id="1_b6cht"]
+[ext_resource type="Script" path="res://nodes/block/checks.gd" id="2_jw6hd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pc0qb"]
+size = Vector3(0.9, 0.9, 0.9)
+
+[sub_resource type="BoxMesh" id="BoxMesh_t846p"]
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_kjoen"]
+
+[node name="block" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_pc0qb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_b6cht")
+mesh = SubResource("BoxMesh_t846p")
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
+occluder = SubResource("BoxOccluder3D_kjoen")
+
+[node name="Area3D" type="Area3D" parent="."]
+script = ExtResource("2_jw6hd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_pc0qb")
+
+[node name="X" type="RayCast3D" parent="Area3D"]
+enabled = false
+target_position = Vector3(1, 0, 0)
+hit_back_faces = false
+collide_with_areas = true
+
+[node name="-X" type="RayCast3D" parent="Area3D"]
+enabled = false
+target_position = Vector3(-1, 0, 0)
+hit_back_faces = false
+collide_with_areas = true
+
+[node name="Y" type="RayCast3D" parent="Area3D"]
+enabled = false
+target_position = Vector3(0, 1, 0)
+hit_back_faces = false
+collide_with_areas = true
+
+[node name="-Y" type="RayCast3D" parent="Area3D"]
+enabled = false
+hit_back_faces = false
+collide_with_areas = true
+
+[node name="Z" type="RayCast3D" parent="Area3D"]
+enabled = false
+target_position = Vector3(0, 0, 1)
+hit_back_faces = false
+collide_with_areas = true
+
+[node name="-Z" type="RayCast3D" parent="Area3D"]
+enabled = false
+target_position = Vector3(0, 0, -1)
+hit_back_faces = false
+collide_with_areas = true
+debug_shape_custom_color = Color(0.699175, 0.313045, 0.0732105, 1)
+debug_shape_thickness = 5
