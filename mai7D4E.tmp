@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0v14bkk35o1w"]
+
+[ext_resource type="Script" path="res://camera.gd" id="2_2gyed"]
+[ext_resource type="PackedScene" uid="uid://igvwmbx3jwqu" path="res://grid.tscn" id="2_8kjat"]
+
+[node name="main" type="Node3D"]
+
+[node name="GridMap" parent="." instance=ExtResource("2_8kjat")]
+mapSize = 500
+metadata/_editor_floor_ = Vector3(0, 1, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 496, 0)
+fov = 98.5822
+script = ExtResource("2_2gyed")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera3D"]

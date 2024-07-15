@@ -1,0 +1,17 @@
+[gd_resource type="MeshLibrary" load_steps=4 format=3 uid="uid://ba8q3kwcvefuy"]
+
+[ext_resource type="Texture2D" uid="uid://dd0hqimg5qxo6" path="res://for arbeid2.jpg" id="1_nxpd4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_la2h8"]
+albedo_texture = ExtResource("1_nxpd4")
+
+[sub_resource type="BoxMesh" id="BoxMesh_t8oak"]
+material = SubResource("StandardMaterial3D_la2h8")
+
+[resource]
+item/0/name = ""
+item/0/mesh = SubResource("BoxMesh_t8oak")
+item/0/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/0/shapes = []
+item/0/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/0/navigation_layers = 1
