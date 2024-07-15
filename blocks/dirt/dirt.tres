@@ -1,0 +1,10 @@
+[gd_resource type="BoxMesh" load_steps=3 format=3 uid="uid://cjuo2654lxmrt"]
+
+[ext_resource type="Texture2D" uid="uid://dqu2wr2xilibp" path="res://blocks/stone/stone.jpg" id="1_o1l5c"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jeew0"]
+albedo_color = Color(0.689308, 0.351886, 0, 1)
+albedo_texture = ExtResource("1_o1l5c")
+
+[resource]
+material = SubResource("StandardMaterial3D_jeew0")

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://d3ive4laommmo"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_c340n"]
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_o8o0a"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cdvgn"]
+
+[node name="block" type="MeshInstance3D"]
+mesh = SubResource("BoxMesh_c340n")
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
+occluder = SubResource("BoxOccluder3D_o8o0a")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_cdvgn")

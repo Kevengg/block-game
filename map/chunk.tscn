@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxe8q6sit4vul"]
+
+[ext_resource type="MeshLibrary" uid="uid://bisu1yqbrv1wr" path="res://blocks/blocks.lib.tres" id="1_x1uas"]
+
+[node name="chunk" type="GridMap"]
+mesh_library = ExtResource("1_x1uas")
+cell_size = Vector3(1, 1, 1)
+cell_octant_size = 16
