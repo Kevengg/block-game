@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://0yts6a3io4fx"]
+
+[ext_resource type="Script" path="res://map/map.gd" id="1_j0vbx"]
+[ext_resource type="JSON" path="res://data/saveData.json" id="2_trero"]
+
+[node name="map" type="Node3D"]
+script = ExtResource("1_j0vbx")
+saveData = ExtResource("2_trero")

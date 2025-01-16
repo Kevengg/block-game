@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsdnvj506wso"]
+
+[ext_resource type="PackedScene" uid="uid://0yts6a3io4fx" path="res://map/map.tscn" id="1_w48jq"]
+[ext_resource type="Script" path="res://camera.gd" id="2_6ww50"]
+
+[node name="main" type="Node3D"]
+
+[node name="map" parent="." instance=ExtResource("1_w48jq")]
+mapSize = 100
+genSpeed = 4
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0)
+script = ExtResource("2_6ww50")

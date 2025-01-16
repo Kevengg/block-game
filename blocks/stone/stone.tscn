@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbg674w34tsax"]
+
+[ext_resource type="PackedScene" uid="uid://d3ive4laommmo" path="res://blocks/block.tscn" id="1_rs5sy"]
+[ext_resource type="BoxMesh" uid="uid://bcvtsb04t2ven" path="res://blocks/stone/stone.tres" id="2_yikby"]
+
+[node name="stone" type="Node3D"]
+
+[node name="block" parent="." instance=ExtResource("1_rs5sy")]
+mesh = ExtResource("2_yikby")
