@@ -40,7 +40,7 @@ func _input(event):
 				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED if event.pressed else Input.MOUSE_MODE_VISIBLE)
 			MOUSE_BUTTON_WHEEL_UP: # Increases max velocity
 				_vel_multiplier = clamp(_vel_multiplier * 1.1, 0.2, 20)
-			MOUSE_BUTTON_WHEEL_DOWN: # Decereases max velocity
+			MOUSE_BUTTON_WHEEL_DOWN: # Decreases max velocity
 				_vel_multiplier = clamp(_vel_multiplier / 1.1, 0.2, 20)
 
 	# Receives key input
@@ -72,7 +72,7 @@ func _process(delta):
 func _update_movement(delta):
 	# Computes desired direction from key states
 	_direction = Vector3(
-		(_d as float) - (_a as float), 
+		(_d as float) - (_a as float),
 		(_e as float) - (_q as float),
 		(_s as float) - (_w as float)
 	)
@@ -113,4 +113,4 @@ func _update_mouselook():
 		_total_pitch += pitch
 	
 		rotate_y(deg_to_rad(-yaw))
-		rotate_object_local(Vector3(1,0,0), deg_to_rad(-pitch))
+		rotate_object_local(Vector3(1, 0, 0), deg_to_rad(-pitch))
