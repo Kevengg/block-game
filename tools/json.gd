@@ -19,3 +19,11 @@ class json:
 		if (!!r):
 			return Vector4i(int(r.get_string(1)),int(r.get_string(2)),int(r.get_string(3)),int(r.get_string(4)))
 		return null
+	
+	## parse a vector as string of x length to a libeary of x length FIXME not implemented
+	static func parseVectorX(string:String, x:int, i:bool=false):
+		pass
+	
+	
+	
+

@@ -19,6 +19,21 @@ config/icon="res://icon.svg"
 
 settings/stdout/print_fps=true
 
+[editor]
+
+version_control/plugin_name="GitPlugin"
+version_control/autoload_on_startup=true
+
+[file_customization]
+
+folder_colors={
+"res://addons/": "red"
+}
+
+[physics]
+
+3d/physics_engine="GodotPhysics3D"
+
 [rendering]
 
 occlusion_culling/use_occlusion_culling=true
