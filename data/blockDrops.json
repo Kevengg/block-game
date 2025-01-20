@@ -1,5 +1,7 @@
 [
-	{},
+	{
+
+	},
 	{
 		"clay": {
 			"chance": 100,
@@ -8,12 +10,18 @@
 		},
 		"coin": {
 			"chance": 1,
-			"count": [1, 60],
+			"count": [
+				1,
+				60
+			],
 			"exclude": null
 		},
 		"bones": {
 			"chance": 20,
-			"count": [1, 3],
+			"count": [
+				1,
+				3
+			],
 			"exclude": null
 		}
 	},

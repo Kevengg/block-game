@@ -1,8 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://cxe8q6sit4vul"]
+[gd_scene load_steps=5 format=3 uid="uid://cxe8q6sit4vul"]
 
-[ext_resource type="MeshLibrary" uid="uid://bisu1yqbrv1wr" path="res://blocks/blocks.lib.tres" id="1_x1uas"]
+[ext_resource type="MeshLibrary" uid="uid://caxaoad8ft1bk" path="res://map/mesh_lib/mesh_lib.tres" id="1_qu8ev"]
+[ext_resource type="Script" path="res://map/chunk.gd" id="2_t4xr7"]
+[ext_resource type="JSON" path="res://data/blockDrops.json" id="3_66s3i"]
+[ext_resource type="JSON" path="res://data/items.json" id="4_m1oro"]
 
 [node name="chunk" type="GridMap"]
-mesh_library = ExtResource("1_x1uas")
+mesh_library = ExtResource("1_qu8ev")
 cell_size = Vector3(1, 1, 1)
 cell_octant_size = 16
+collision_layer = 17
+collision_mask = 17
+script = ExtResource("2_t4xr7")
+blockDrops = ExtResource("3_66s3i")
+items = ExtResource("4_m1oro")

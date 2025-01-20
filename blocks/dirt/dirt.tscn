@@ -1,7 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://dq8vlonvvxqbg"]
+[gd_scene load_steps=3 format=3 uid="uid://dq8vlonvvxqbg"]
 
-[ext_resource type="PackedScene" uid="uid://d3ive4laommmo" path="res://blocks/block.tscn" id="1_qwwxs"]
+[ext_resource type="PackedScene" uid="uid://d3ive4laommmo" path="res://blocks/block.tscn" id="1_5pwlq"]
+[ext_resource type="BoxMesh" uid="uid://cjuo2654lxmrt" path="res://blocks/dirt/dirt.tres" id="2_qpnki"]
 
 [node name="dirt" type="Node3D"]
 
-[node name="block" parent="." instance=ExtResource("1_qwwxs")]
+[node name="dirt" parent="." instance=ExtResource("1_5pwlq")]
+mesh = ExtResource("2_qpnki")
