@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://oa5i1i5phypc"]
+
+[sub_resource type="GDScript" id="GDScript_a1b7e"]
+script/source = "extends RigidBody3D
+
+signal mesh_update(mesh:Mesh)
+
+func set_mesh(_mesh:Mesh):
+	set_meta(\"mesh\", _mesh)
+	emit_signal(\"mesh_update\", _mesh)
+"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d6v4r"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8ti2m"]
+material = SubResource("StandardMaterial3D_d6v4r")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7cs25"]
+size = Vector3(0.4, 0.4, 0.4)
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_oeiha"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_xa4xs"]
+
+[sub_resource type="GDScript" id="GDScript_3mvb3"]
+script/source = "extends MeshInstance3D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	## sets mesh to parrent mesh meta data
+	mesh = $\"..\".get_meta(\"mesh\")
+
+
+
+
+func _on_item_mesh_update(_mesh):
+	mesh = _mesh
+"
+
+[node name="item" type="RigidBody3D"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+collision_layer = 0
+collision_mask = 16
+can_sleep = false
+script = SubResource("GDScript_a1b7e")
+metadata/mesh = SubResource("BoxMesh_8ti2m")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_7cs25")
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+occluder = SubResource("BoxOccluder3D_oeiha")
+
+[node name="Item" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+mesh = SubResource("BoxMesh_xa4xs")
+script = SubResource("GDScript_3mvb3")
+
+[connection signal="mesh_update" from="." to="Item" method="_on_item_mesh_update"]

@@ -3,12 +3,12 @@
 
 	},
 	{
-		"clay": {
+		"0": {
 			"chance": 100,
 			"count": 1,
 			"exclude": null
 		},
-		"coin": {
+		"1": {
 			"chance": 1,
 			"count": [
 				1,
@@ -16,7 +16,7 @@
 			],
 			"exclude": null
 		},
-		"bones": {
+		"2": {
 			"chance": 20,
 			"count": [
 				1,
@@ -26,17 +26,17 @@
 		}
 	},
 	{
-		"stone": {
+		"3": {
 			"chance": 100,
 			"count": 1,
 			"exclude": null
 		},
-		"coal": {
+		"4": {
 			"chance": 10,
 			"count": 1,
 			"exclude": true
 		},
-		"iron_ore": {
+		"5": {
 			"chance": 5,
 			"count": 1,
 			"exclude": true

@@ -3,23 +3,21 @@
 		"name": "clay",
 		"price": 1,
 		"description": "",
-		"mesh": "",
-		"texture": "",
+		"mesh": null,
 		"stack": 1
 	},
 	{
 		"name": "coin",
 		"price": 1,
 		"description": "",
-		"mesh": "",
-		"texture": "",
+		"mesh": null,
 		"stack": 200
 	},
 	{
 		"name": "bones",
 		"price": 3,
 		"description": "",
-		"mesh": "",
+		"mesh": null,
 		"texture": "",
 		"stack": 10
 	},
@@ -27,24 +25,21 @@
 		"name": "stone",
 		"price": 2,
 		"description": "",
-		"mesh": "",
-		"texture": "",
+		"mesh": null,
 		"stack": 1
 	},
 	{
 		"name": "coal",
 		"price": 5,
 		"description": "",
-		"mesh": "",
-		"texture": "",
+		"mesh": null,
 		"stack": 10
 	},
 	{
 		"name": "iron_ore",
 		"price": 10,
 		"description": "",
-		"mesh": "",
-		"texture": "",
+		"mesh": null,
 		"stack": 1
 	}
 ]

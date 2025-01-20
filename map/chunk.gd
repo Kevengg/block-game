@@ -16,6 +16,7 @@ func _ready():
 	if (!itemPrefab):
 		push_error("no item prefab selected")
 
+
 ## calculates and returns what items are dropped when the block is broken
 func calc_drop(blockId: int) -> Dictionary:
 	## selects drop data related to specific block based on id
@@ -70,11 +71,40 @@ func block_break(pos: Vector3):
 	#remove it from sene 
 	set_cell_item(to_local(pos), -1)
 	var drops = calc_drop(block)
-
+	
 	print(drops)
 	##FIXME create system to spawn items from broken block
 	for drop in drops:
-		var itemInstance = itemPrefab.instantiate()
-		itemInstance.set("position", pos)
+		drop = int(drop)
+		## creates a new item instance
+		var itemInstance = itemPrefab.instantiate() as Node3D
+		## stets the position of the item instance to where the broken block was
+		# itemInstance.set("position", pos)
+		itemInstance.position = get_grid_center_global(pos)
+
+		
+		## holds current item
+		var item = items.data[drop]
+
+		## sets the mesh of the item to the correct one if it has one
+		if item.mesh != null:
+			itemInstance.set_mesh(item.mesh)
+
+		itemInstance.set_mesh(load("res://blocks/dirt/dirt.tres"))
+		## gives a random rotation to the item
+
+
 		add_sibling(itemInstance)
-		print(pos)
+
+## gets center of grid based ol local position 	
+func get_grid_center_global(global_pos: Vector3) -> Vector3:
+	return to_global((get_grid_center(to_local(global_pos))))
+
+
+## gets center of grid based ol local position 
+func get_grid_center(local_pos: Vector3) -> Vector3:
+	local_pos = (local_pos.floor())
+	local_pos.x += .5
+	local_pos.y += .5
+	local_pos.z += .5
+	return local_pos
