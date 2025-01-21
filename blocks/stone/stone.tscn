@@ -1,9 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://cbg674w34tsax"]
+[gd_scene load_steps=4 format=3 uid="uid://cbg674w34tsax"]
 
 [ext_resource type="PackedScene" uid="uid://d3ive4laommmo" path="res://blocks/block.tscn" id="1_rs5sy"]
 [ext_resource type="BoxMesh" uid="uid://bcvtsb04t2ven" path="res://blocks/stone/stone.tres" id="2_yikby"]
 
+[sub_resource type="GDScript" id="GDScript_bvt58"]
+script/source = "extends MeshInstance3D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	print(\"i live\")
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
 [node name="stone" type="Node3D"]
 
-[node name="block" parent="." instance=ExtResource("1_rs5sy")]
+[node name="stone" parent="." instance=ExtResource("1_rs5sy")]
 mesh = ExtResource("2_yikby")
+script = SubResource("GDScript_bvt58")

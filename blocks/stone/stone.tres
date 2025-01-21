@@ -1,9 +1,9 @@
 [gd_resource type="BoxMesh" load_steps=3 format=3 uid="uid://bcvtsb04t2ven"]
 
-[ext_resource type="Texture2D" uid="uid://dqu2wr2xilibp" path="res://blocks/stone/stone.jpg" id="1_p5psf"]
+[ext_resource type="Texture2D" uid="uid://dqu2wr2xilibp" path="res://blocks/stone/stone.jpg" id="1_58dis"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jeew0"]
-albedo_texture = ExtResource("1_p5psf")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_docon"]
+albedo_texture = ExtResource("1_58dis")
 
 [resource]
-material = SubResource("StandardMaterial3D_jeew0")
+material = SubResource("StandardMaterial3D_docon")

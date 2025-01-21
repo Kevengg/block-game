@@ -1,0 +1,73 @@
+[gd_scene load_steps=7 format=3 uid="uid://oa5i1i5phypc"]
+
+[sub_resource type="GDScript" id="GDScript_a1b7e"]
+script/source = "extends RigidBody3D
+
+signal mesh_update(mesh:Mesh)
+
+signal descripton_update(description:String)
+
+signal stack_update(count:int)
+
+func set_mesh(_mesh:Mesh) -> void:
+	set_meta(\"mesh\", _mesh)
+	emit_signal(\"mesh_update\", _mesh)
+
+func set_descripton(description:String) -> void :
+	set_meta(\"description\", description)
+	emit_signal(\"descripton_update\", description)
+
+func set_stack(count:int) -> void:
+	set_meta(\"stack\", count)
+	emit_signal(\"stack_update\", count)
+"
+
+[sub_resource type="BoxMesh" id="BoxMesh_whmik"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7cs25"]
+size = Vector3(0.4, 0.4, 0.4)
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_oeiha"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_xa4xs"]
+
+[sub_resource type="GDScript" id="GDScript_3mvb3"]
+script/source = "extends MeshInstance3D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	## sets mesh to parrent mesh meta data
+	mesh = $\"..\".get_meta(\"mesh\")
+
+
+
+
+func _on_item_mesh_update(_mesh):
+	mesh = _mesh
+"
+
+[node name="item" type="RigidBody3D"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+collision_layer = 0
+collision_mask = 16
+can_sleep = false
+lock_rotation = true
+script = SubResource("GDScript_a1b7e")
+metadata/description = ""
+metadata/stack = 1
+metadata/mesh = SubResource("BoxMesh_whmik")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_7cs25")
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+occluder = SubResource("BoxOccluder3D_oeiha")
+
+[node name="Item" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+mesh = SubResource("BoxMesh_xa4xs")
+script = SubResource("GDScript_3mvb3")
+
+[connection signal="mesh_update" from="." to="Item" method="_on_item_mesh_update"]

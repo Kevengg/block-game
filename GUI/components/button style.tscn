@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5r1ytp20uw4i"]
+
+[ext_resource type="Theme" uid="uid://bl7wmb7hnee2h" path="res://GUI/components/themes/main.tres" id="1_kjgsj"]
+
+[node name="ButtonStyle" type="Panel"]
+offset_right = 1152.0
+offset_bottom = 648.0
+tooltip_text = "test"
+theme = ExtResource("1_kjgsj")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+theme = ExtResource("1_kjgsj")
+text = "hello :3"
