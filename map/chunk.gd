@@ -26,6 +26,8 @@ func _ready():
 			get_tree().quit(1)
 	
 	replace_many_with_scenes(toReplace)
+
+	load_structure(load("res://resource/structures/alter.tscn"), Vector3(0, 48, 0))
 	pass
 
 ## calculates and returns what items are dropped when the block is broken
@@ -136,4 +138,24 @@ func replace_many_with_scenes(replacements: Dictionary, child_of: Node = $"..") 
 	for replacement in replacements:
 		var cells = get_used_cells_by_item(int(replacement))
 		for cell in cells:
-			replace_with_scene(cell, replacements[replacement])
+			replace_with_scene(cell, replacements[replacement], child_of)
+			
+
+## loads given structure FIXME should probably be om map component
+func load_structure(structure: PackedScene, pos: Vector3) -> void:
+
+	## instance of wanted structure  
+	var tempInstance: GridMap = structure.instantiate() as GridMap
+
+	## list of all occupied cells in the structure
+	var cellCords = (tempInstance as GridMap).get_used_cells()
+
+	#loop thru occupied cells
+	for cord in cellCords:
+		## item in cell
+		var item = tempInstance.get_cell_item(cord)
+		# set the block based on the cord given by the structure modified my the position in the chunk 
+		set_cell_item(pos + (cord as Vector3), item)
+	
+	# remove instance when done
+	tempInstance.queue_free()

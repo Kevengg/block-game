@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="grid_testv3-chunk_based_gen"
+config/version="0.0.03"
 run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
@@ -18,6 +19,13 @@ config/icon="res://icon.svg"
 [debug]
 
 settings/stdout/print_fps=true
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/mode=3
+window/size/resizable=false
 
 [editor]
 

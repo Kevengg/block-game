@@ -1,0 +1,132 @@
+[gd_scene load_steps=5 format=3 uid="uid://dgvcvttoqkkwo"]
+
+[ext_resource type="Theme" uid="uid://bl7wmb7hnee2h" path="res://GUI/components/themes/main.tres" id="1_rcwap"]
+[ext_resource type="Script" path="res://GUI/components/main menu.gd" id="2_4b2ue"]
+[ext_resource type="Texture2D" uid="uid://dxyo5smft4vt1" path="res://tests/fire.jpg" id="2_kd6rq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yfxw3"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_rcwap")
+script = ExtResource("2_4b2ue")
+
+[node name="Control" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = -48.0
+offset_right = 76.0
+offset_bottom = -25.0
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+auto_translate = false
+alignment = 2
+
+[node name="version" type="Label" parent="Control"]
+layout_mode = 2
+text = "0.0.03"
+
+[node name="VFlowContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1917.0
+offset_bottom = 1080.0
+grow_horizontal = 0
+size_flags_horizontal = 3
+
+[node name="tittle" type="TextureRect" parent="VFlowContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 8
+texture = ExtResource("2_kd6rq")
+expand_mode = 2
+stretch_mode = 1
+
+[node name="HSeparator2" type="HSeparator" parent="VFlowContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+theme_override_styles/separator = SubResource("StyleBoxEmpty_yfxw3")
+
+[node name="continue" type="VBoxContainer" parent="VFlowContainer"]
+layout_mode = 2
+
+[node name="save name" type="Label" parent="VFlowContainer/continue"]
+layout_mode = 2
+text = "<SAVE NAME>"
+horizontal_alignment = 1
+
+[node name="continue" type="Button" parent="VFlowContainer/continue"]
+layout_mode = 2
+text = "Continue"
+
+[node name="load" type="Button" parent="VFlowContainer/continue"]
+layout_mode = 2
+text = "Load world"
+
+[node name="HSeparator" type="HSeparator" parent="VFlowContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+theme_override_styles/separator = SubResource("StyleBoxEmpty_yfxw3")
+
+[node name="newWorld" type="VBoxContainer" parent="VFlowContainer"]
+layout_mode = 2
+
+[node name="newWorldTitle" type="Label" parent="VFlowContainer/newWorld"]
+layout_mode = 2
+text = "New word"
+horizontal_alignment = 1
+
+[node name="singlepalyer" type="Button" parent="VFlowContainer/newWorld"]
+layout_mode = 2
+text = "Singleplayer"
+
+[node name="multipalyer" type="Button" parent="VFlowContainer/newWorld"]
+layout_mode = 2
+text = "Multipalyer"
+
+[node name="HSeparator3" type="HSeparator" parent="VFlowContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+theme_override_styles/separator = SubResource("StyleBoxEmpty_yfxw3")
+
+[node name="mods" type="Button" parent="VFlowContainer"]
+layout_mode = 2
+text = "Mods"
+
+[node name="HSeparator4" type="HSeparator" parent="VFlowContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+theme_override_styles/separator = SubResource("StyleBoxEmpty_yfxw3")
+
+[node name="Options" type="GridContainer" parent="VFlowContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="About" type="Button" parent="VFlowContainer/Options"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "About"
+
+[node name="settings" type="Button" parent="VFlowContainer/Options"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Settings"
+
+[node name="exit" type="Button" parent="VFlowContainer/Options"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Exit"
+
+[connection signal="pressed" from="VFlowContainer/continue/continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="VFlowContainer/Options/exit" to="." method="_on_exit_pressed"]
