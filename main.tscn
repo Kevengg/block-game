@@ -8,7 +8,7 @@
 [node name="Main" type="Node3D" node_paths=PackedStringArray("items")]
 script = ExtResource("1_x7qt0")
 items = NodePath("items")
-metadata/saveData = {}
+metadata/saveData = null
 
 [node name="items" type="Node" parent="."]
 
