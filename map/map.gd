@@ -61,7 +61,7 @@ func genChunk(cord: Vector2i) -> Array[Vector4i]:
 	var height = getHeight(cord)
 
 	var chunkData: Array[Vector4i] = []
-	var blockID = 0
+	var blockID = 2
 	var r = range(0, chunkSize)
 	## range based on chunk size
 	## x is width

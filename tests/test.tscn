@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8h65f4cttrku"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_itbvv"]
+albedo_color = Color(0.063659, 0.214286, 0.311353, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_khpbg"]
+material = SubResource("StandardMaterial3D_itbvv")
+
+[node name="Test" type="MeshInstance3D"]
+mesh = SubResource("CylinderMesh_khpbg")

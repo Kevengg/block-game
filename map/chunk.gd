@@ -5,20 +5,28 @@ extends GridMap
 ## important data related to items
 @export var items: JSON = null
 
+@export var toReplace: Dictionary = {
+	"2": preload("res://tests/test.tscn")
+}
+
+
 var itemPrefab = preload("res://item/item.tscn")
 
 ## runs checks on startup to prevent game to start without dependencies and logs it in a good way
 func _ready():
-	if (!blockDrops):
-		printerr(scene_file_path, " - ", "no block drop data selected")
-		get_tree().quit(1)
-	if (!items):
-		printerr(scene_file_path, " - ", "no item data selected")
-		get_tree().quit(1)
-	if (!itemPrefab):
-		printerr(scene_file_path, " - ", "no item prefab selected")
-		get_tree().quit(1)
-
+	if name != "GridTest":
+		if (!blockDrops):
+			printerr(scene_file_path, " - ", "no block drop data selected")
+			get_tree().quit(1)
+		if (!items):
+			printerr(scene_file_path, " - ", "no item data selected")
+			get_tree().quit(1)
+		if (!itemPrefab):
+			printerr(scene_file_path, " - ", "no item prefab selected")
+			get_tree().quit(1)
+	
+	replace_many_with_scenes(toReplace)
+	pass
 
 ## calculates and returns what items are dropped when the block is broken
 func calc_drop(blockId: int) -> Dictionary:
@@ -64,6 +72,7 @@ func calc_drop(blockId: int) -> Dictionary:
 			else:
 				var r = dropData[item].count
 				drops[item] = randi_range(r[0], r[1])
+				
 
 	return drops
 
@@ -98,11 +107,33 @@ func block_break(pos: Vector3):
 func get_grid_center_global(global_pos: Vector3) -> Vector3:
 	return to_global((get_grid_center(to_local(global_pos))))
 
-
 ## gets center of grid based ol local position 
 func get_grid_center(local_pos: Vector3) -> Vector3:
 	local_pos = (local_pos.floor())
-	local_pos.x += .5
-	local_pos.y += .5
-	local_pos.z += .5
+	local_pos.x += cell_size.x / 2
+	local_pos.y += cell_size.y / 2
+	local_pos.z += cell_size.z / 2
 	return local_pos
+
+func replace_with_scene(global_pos: Vector3, scene: PackedScene, child_of: Node = $"..") -> void:
+
+	## holds where the scene origin should be 
+	var origin = get_grid_center_global(global_pos)
+
+	## make an instance of the scene
+	var sceneInstance: Node3D = scene.instantiate()
+
+	# set the position of the scene 
+	sceneInstance.position = origin
+
+	# create the scene
+	child_of.add_child.call_deferred(sceneInstance)
+
+	# remove temp item
+	set_cell_item(global_pos, -1)
+
+func replace_many_with_scenes(replacements: Dictionary, child_of: Node = $"..") -> void:
+	for replacement in replacements:
+		var cells = get_used_cells_by_item(int(replacement))
+		for cell in cells:
+			replace_with_scene(cell, replacements[replacement])

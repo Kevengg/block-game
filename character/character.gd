@@ -39,7 +39,6 @@ func collect():
 	var query = PhysicsRayQueryParameters3D.create(pos, pos - Vector3(0, ray_length, 0, ), 1)
 	#gets the result of ray query
 	var collision = get_world_3d().direct_space_state.intersect_ray(query)
-	print(collision)
 	#if there is a collision
 	if !collision.is_empty():
 		#get the chunk it collides with
