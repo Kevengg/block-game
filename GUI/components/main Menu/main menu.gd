@@ -2,7 +2,6 @@ extends Control
 
 var helper = Game.helpers
 
-@export var saveData: JSON = null
 @export var items: Node = null
 
 var lastUsed = preload("res://data/saves/lastUsed.json").data
@@ -13,7 +12,6 @@ func _ready():
 	if lastUsed != null:
 		lastSave = load("res://data/saves/" + lastUsed + ".json")
 
-	helper.checkItem(saveData, get_tree(), (scene_file_path + " - " + "no save data selected"))
 	helper.checkItem(items, get_tree(), (scene_file_path + " - " + "no place to put items"))
 
 	# set project version
@@ -42,6 +40,5 @@ func _on_continue_pressed():
 
 func _on_singlepalyer_pressed():
 	var nextPage = load("res://GUI/components/new world/new world.tscn").instantiate()
-	nextPage.saveData = saveData
 	add_sibling(nextPage)
 	queue_free()

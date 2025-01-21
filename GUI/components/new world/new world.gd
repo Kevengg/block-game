@@ -1,9 +1,11 @@
 extends Control
 
-@export var saveData: JSON
+
 @export var mapSize := 6
 signal seedError(msg: String)
 signal nameError(msg: String)
+
+var lastUsed = preload("res://data/saves/lastUsed.json")
 
 func _on_button_pressed():
 	var worldName = $"world name".text
@@ -18,14 +20,16 @@ func _on_button_pressed():
 	if is_nan(int(worldSeed)) || (int(worldSeed) % 2 != 0):
 		emit_signal("seedError", "invalid")
 		return
-
+	worldSeed = int(worldSeed)
 	# create new save 
-	saveData.data.push_front({
+	var file = FileAccess.open("res://data/saves/" + worldName + ".json", FileAccess.WRITE)
+	file.store_string(
+	str({
 		"name": worldName,
 		"seed": worldSeed,
 		"mapSize": mapSize,
 		"chunks": {"0,0": ["(0,0,0,1)", "(1,0,0,2)"]}
-		})
+	}))
 	
-	# update saved data
-	Game.json.updateJsonFile(saveData)
+	lastUsed.data = worldName
+	Game.json.updateJsonFile(lastUsed)

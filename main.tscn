@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bxcryaglfwlbf"]
+[gd_scene load_steps=4 format=3 uid="uid://bxcryaglfwlbf"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_x7qt0"]
 [ext_resource type="Script" path="res://tools/camera.gd" id="2_do6n1"]
-[ext_resource type="JSON" path="res://data/saveData.json" id="3_6hwc3"]
 [ext_resource type="PackedScene" uid="uid://dgvcvttoqkkwo" path="res://GUI/components/main Menu/main menu.tscn" id="5_v2emx"]
 
 [node name="Main" type="Node3D" node_paths=PackedStringArray("items")]
@@ -20,5 +19,4 @@ script = ExtResource("2_do6n1")
 [node name="ui" type="CanvasLayer" parent="."]
 
 [node name="MainMenu2" parent="ui" node_paths=PackedStringArray("items") instance=ExtResource("5_v2emx")]
-saveData = ExtResource("3_6hwc3")
 items = NodePath("../../items")
