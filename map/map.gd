@@ -28,7 +28,6 @@ var chunks: Array[Vector2i] = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print(get_meta_list())
 	if (!saveData):
 		printerr(scene_file_path, " - ", "no save data on map")
 		
@@ -82,7 +81,6 @@ func genChunk(cord: Vector2i) -> Array[Vector4i]:
 func _process(delta):
 	if (!chunks.is_empty()):
 		var chunksToGenerate: Array[Vector2i] = []
-		print(round(genSpeed / ceil(delta * 100)))
 		for _count in round(genSpeed / ceil(delta * 100)):
 			chunksToGenerate.append(chunks.pop_front())
 		
