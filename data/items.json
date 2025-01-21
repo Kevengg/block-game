@@ -3,7 +3,7 @@
 		"name": "clay",
 		"price": 1,
 		"description": "",
-		"mesh": null,
+		"mesh": "res://resource/mesh/clay_cube.res",
 		"stack": 1
 	},
 	{

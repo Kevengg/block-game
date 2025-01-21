@@ -21,9 +21,9 @@ class json:
 		return null
 	
 	## parse a vector as string of x length to a libeary of x length FIXME not implemented
-	static func parseVectorX(string:String, x:int, i:bool=false):
-		pass
-	
+	#static func parseVectorX(string:String, x:int, i:bool=false):
+		#pass
+	#
 	
 	
 

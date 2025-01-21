@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://dq8vlonvvxqbg"]
 
-[ext_resource type="PackedScene" uid="uid://d3ive4laommmo" path="res://blocks/block.tscn" id="1_1bliv"]
-[ext_resource type="BoxMesh" uid="uid://cjuo2654lxmrt" path="res://blocks/dirt/dirt.tres" id="2_bw0q3"]
+[ext_resource type="PackedScene" uid="uid://d3ive4laommmo" path="res://blocks/block.tscn" id="1_qa8jq"]
+[ext_resource type="BoxMesh" uid="uid://cjuo2654lxmrt" path="res://blocks/dirt/dirt.tres" id="2_5raxl"]
 
 [node name="dirt" type="Node3D"]
 
-[node name="dirt" parent="." instance=ExtResource("1_1bliv")]
-mesh = ExtResource("2_bw0q3")
+[node name="dirt" parent="." instance=ExtResource("1_qa8jq")]
+mesh = ExtResource("2_5raxl")

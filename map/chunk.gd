@@ -10,17 +10,20 @@ var itemPrefab = preload("res://item/item.tscn")
 ## runs checks on startup to prevent game to start without dependencies and logs it in a good way
 func _ready():
 	if (!blockDrops):
-		push_error("no block drop data selected")
+		printerr(scene_file_path, " - ", "no block drop data selected")
+		get_tree().quit(1)
 	if (!items):
-		push_error("no item data selected")
+		printerr(scene_file_path, " - ", "no item data selected")
+		get_tree().quit(1)
 	if (!itemPrefab):
-		push_error("no item prefab selected")
+		printerr(scene_file_path, " - ", "no item prefab selected")
+		get_tree().quit(1)
 
 
 ## calculates and returns what items are dropped when the block is broken
 func calc_drop(blockId: int) -> Dictionary:
 	## selects drop data related to specific block based on id
-	var dropData: Dictionary = blockDrops.data[blockId - 1]
+	var dropData: Dictionary = blockDrops.data[blockId]
 	## holds what is dropped from this instance
 	var drops: Dictionary = {}
 	## witch item ids are excluded
@@ -82,19 +85,14 @@ func block_break(pos: Vector3):
 		# itemInstance.set("position", pos)
 		itemInstance.position = get_grid_center_global(pos)
 
-		
-		## holds current item
-		var item = items.data[drop]
-
 		## sets the mesh of the item to the correct one if it has one
-		if item.mesh != null:
-			itemInstance.set_mesh(item.mesh)
+		if items.data[drop].mesh != null:
+			itemInstance.set_meta("mesh", load(items.data[drop].mesh))
 
-		itemInstance.set_mesh(load("res://blocks/dirt/dirt.tres"))
 		## gives a random rotation to the item
+		itemInstance.rotate_y(randi_range(0, 4) * 90)
 
-
-		add_sibling(itemInstance)
+		$"..".items.add_child(itemInstance)
 
 ## gets center of grid based ol local position 	
 func get_grid_center_global(global_pos: Vector3) -> Vector3:

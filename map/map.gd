@@ -15,11 +15,12 @@ extends Node3D
 @export var stepHeight := chunkSize
 ## how many chunks to generate per frame
 @export var genSpeed := 2
-
+## where to store items
 @export var items: Node3D = null
+## block library
+@export var blockLib: MeshLibrary = preload("res://map/mesh_lib/mesh_lib.tres")
 
 
-var blockLib = preload("res://map/mesh_lib/mesh_lib.tres")
 var chunk = preload("res://map/chunk.tscn")
 var noise = FastNoiseLite.new()
 var chunks: Array[Vector2i] = []
@@ -31,16 +32,17 @@ func _ready():
 	if (!saveData):
 		printerr(scene_file_path, " - ", "no save data on map")
 		
-	if items == null:
-		
-		printerr(scene_file_path, " - ", "no place to store items")
-		get_tree().quit(1)
+	#if items == null:
+		#print($".")
+		#printerr(scene_file_path, " - ", "no place to store items")
+		#get_tree().quit(1)
 	noise.noise_type = noise.TYPE_PERLIN
 	
 	var mapSeed = str(saveData.data.seed)
 	if mapSeed.length() % 2 != 0:
 		printerr(scene_file_path, " - ", "invalid seed")
 		get_tree().quit(1)
+		
 	
 	noise.offset = Vector3(float(mapSeed.substr(0, mapSeed.length() / 2)), 0, float(mapSeed.substr(mapSeed.length() / 2 - 1, -1)))
 	
@@ -65,7 +67,7 @@ func genChunk(cord: Vector2i) -> Array[Vector4i]:
 	var height = getHeight(cord)
 
 	var chunkData: Array[Vector4i] = []
-	var blockID = 1
+	var blockID = 0
 	var r = range(0, chunkSize)
 	## range based on chunk size
 	## x is width

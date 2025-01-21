@@ -1,4 +1,4 @@
-extends RigidBody3D
+extends CharacterBody3D
 
 
 # Called when the node enters the scene tree for the first time.
@@ -14,14 +14,7 @@ func _input(event):
 				collect()
 				
 		
-		if event.keycode == KEY_LEFT:
-			apply_force(Vector3(60, 0, 0))
-		if event.keycode == KEY_RIGHT:
-			apply_force(Vector3(-60, 0, 0))
-		if event.keycode == KEY_UP:
-			apply_force(Vector3(0, 0, 60))
-		if event.keycode == KEY_DOWN:
-			apply_force(Vector3(0, 0, -60))
+	
 
 func collect():
 	
