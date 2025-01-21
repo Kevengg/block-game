@@ -25,7 +25,22 @@ class json:
 	
 class helpers:
 
+	## check if item is true and prints an error and closes the game
 	static func checkItem(item, get_tree, errorText, errorCode = 1):
 		if !item:
 			printerr(errorText)
 			get_tree.quit(errorCode)
+
+	## cycle to next ui page
+	static func nextPage(_nextPage: String, currentPage: Node):
+		var loadedPage = load(_nextPage).instantiate()
+		currentPage.add_sibling(loadedPage)
+		currentPage.queue_free()
+
+
+	static func findBy(item: Dictionary, arr: Array) -> int:
+		print(arr)
+		for i in arr as Array:
+			if arr[i][item.keys()[0]] == item[0]:
+				return i
+		return -1

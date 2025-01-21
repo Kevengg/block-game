@@ -31,10 +31,12 @@ func _on_exit_pressed():
 
 
 func _on_continue_pressed():
-	get_tree().root.set_meta("saveData", save)
-	var map = preload("res://map/map.tscn").instantiate() as Node3D
-	map.saveData = save
-	map.items = items
-	get_tree().root.add_child(map)
+	get_tree().root.get_child(0).load_map(save)
+	queue_free()
 	
+
+func _on_singlepalyer_pressed():
+	var nextPage = load("res://GUI/components/new world/new world.tscn").instantiate()
+	nextPage.saveData = saveData
+	add_sibling(nextPage)
 	queue_free()
