@@ -8,7 +8,7 @@ extends Node3D
 ## where to save data
 @export var saveData: JSON = null;
 ## map size in chunks
-@export var mapSize := 1
+@export var mapSize := 2
 ## how many height changes is possible (in steps)
 @export var heightDeviation := 8
 ## how heigh each step should be
@@ -32,10 +32,7 @@ func _ready():
 	if (!saveData):
 		printerr(scene_file_path, " - ", "no save data on map")
 		
-	#if items == null:
-		#print($".")
-		#printerr(scene_file_path, " - ", "no place to store items")
-		#get_tree().quit(1)
+	
 	noise.noise_type = noise.TYPE_PERLIN
 	
 	var mapSeed = str(saveData.data.seed)
@@ -50,12 +47,10 @@ func _ready():
 	for x in mapSize:
 		for y in mapSize:
 			chunks.append(Vector2i(x, y))
-	#
-	#loadMap()
+	
 
 func getHeight(cord: Vector2i) -> int:
 	return int(noise.get_noise_2d(cord.x, cord.y) * heightDeviation + heightDeviation - 3) * stepHeight
-	#return 1
 	
 	
 func save():
