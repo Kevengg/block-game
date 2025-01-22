@@ -1,14 +1,13 @@
 extends Node3D
 
+var helpers = Game.helpers
 
 ## size of one chunk in blocks
 @export var chunkSize := 16;
 ## lowest block in world
 @export var worldBottom := -32
 ## where to save data
-@export var saveData: JSON = null;
-## map size in chunks
-@export var mapSize := 2
+@export var saveData: Dictionary;
 ## how many height changes is possible (in steps)
 @export var heightDeviation := 8
 ## how heigh each step should be
@@ -28,23 +27,23 @@ var chunks: Array[Vector2i] = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if (!saveData):
-		printerr(scene_file_path, " - ", "no save data on map")
+	
+	helpers.checkItem(saveData, get_tree(), (scene_file_path + " - " + "no save data on map"))
 		
 	
 	noise.noise_type = noise.TYPE_PERLIN
 	
-	var mapSeed = str(saveData.data.seed)
-	if mapSeed.length() % 2 != 0:
-		printerr(scene_file_path, " - ", "invalid seed")
-		get_tree().quit(1)
-		
-	
+
+	var mapSeed = str(saveData.seed)
+
+	helpers.checkItem(mapSeed.length() % 2 == 0, get_tree(), (scene_file_path + " - " + "invalid seed"))
+
+
 	noise.offset = Vector3(float(mapSeed.substr(0, mapSeed.length() / 2)), 0, float(mapSeed.substr(mapSeed.length() / 2 - 1, -1)))
 	
 	## generate a list over all chunks that should be loaded
-	for x in mapSize:
-		for y in mapSize:
+	for x in saveData.mapSize:
+		for y in saveData.mapSize:
 			chunks.append(Vector2i(x, y))
 	
 
@@ -53,9 +52,9 @@ func getHeight(cord: Vector2i) -> int:
 	
 	
 func save():
-	saveData.set("test", 1)
+	saveData[1] = "test"
 
-## generates an vector 2 array were v[1] is height, and v[2] is block id
+## generates an vector 2 array were v[x] is height, and v[y] is block id
 func genChunk(cord: Vector2i) -> Array[Vector4i]:
 	## hight based on noise
 	var height = getHeight(cord)
@@ -73,8 +72,8 @@ func genChunk(cord: Vector2i) -> Array[Vector4i]:
 				chunkData.append(Vector4i(x, y, z, blockID))
 	
 	var key = str(cord.x) + "," + str(cord.y)
-	if (saveData.data["chunks"].has(key)):
-		chunkData.append_array(saveData.data["chunks"][key].map(Game.json.parseVector4i))
+	if (saveData["chunks"].has(key)):
+		chunkData.append_array(saveData["chunks"][key].map(Game.json.parseVector4i))
 	return chunkData
 
 

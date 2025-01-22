@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=3 uid="uid://br0hsm5jp1186"]
+
+[ext_resource type="Script" path="res://GUI/components/new world/new world.gd" id="1_8tguw"]
+
+[node name="NewWorld" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8tguw")
+
+[node name="world name" type="TextEdit" parent="."]
+layout_mode = 0
+offset_right = 273.0
+offset_bottom = 40.0
+text = "12"
+placeholder_text = "world name"
+middle_mouse_paste_enabled = false
+wrap_mode = 1
+
+[node name="world seed" type="TextEdit" parent="."]
+layout_mode = 0
+offset_top = 40.0
+offset_right = 273.0
+offset_bottom = 80.0
+text = "12"
+placeholder_text = "world seed"
+middle_mouse_paste_enabled = false
+wrap_mode = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -137.0
+offset_top = -44.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "generate world"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

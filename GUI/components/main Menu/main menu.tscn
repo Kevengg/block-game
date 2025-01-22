@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dgvcvttoqkkwo"]
 
 [ext_resource type="Theme" uid="uid://bl7wmb7hnee2h" path="res://GUI/components/themes/main.tres" id="1_rcwap"]
-[ext_resource type="Script" path="res://GUI/components/main menu.gd" id="2_4b2ue"]
+[ext_resource type="Script" path="res://GUI/components/main Menu/main menu.gd" id="2_as1qk"]
 [ext_resource type="Texture2D" uid="uid://dxyo5smft4vt1" path="res://tests/fire.jpg" id="2_kd6rq"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yfxw3"]
@@ -14,7 +14,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_rcwap")
-script = ExtResource("2_4b2ue")
+script = ExtResource("2_as1qk")
 
 [node name="Control" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -93,6 +93,7 @@ text = "Singleplayer"
 
 [node name="multipalyer" type="Button" parent="VFlowContainer/newWorld"]
 layout_mode = 2
+disabled = true
 text = "Multipalyer"
 
 [node name="HSeparator3" type="HSeparator" parent="VFlowContainer"]
@@ -102,6 +103,7 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_yfxw3")
 
 [node name="mods" type="Button" parent="VFlowContainer"]
 layout_mode = 2
+disabled = true
 text = "Mods"
 
 [node name="HSeparator4" type="HSeparator" parent="VFlowContainer"]
@@ -116,11 +118,13 @@ columns = 3
 [node name="About" type="Button" parent="VFlowContainer/Options"]
 layout_mode = 2
 size_flags_horizontal = 3
+disabled = true
 text = "About"
 
 [node name="settings" type="Button" parent="VFlowContainer/Options"]
 layout_mode = 2
 size_flags_horizontal = 3
+disabled = true
 text = "Settings"
 
 [node name="exit" type="Button" parent="VFlowContainer/Options"]
@@ -129,4 +133,6 @@ size_flags_horizontal = 3
 text = "Exit"
 
 [connection signal="pressed" from="VFlowContainer/continue/continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="VFlowContainer/continue/load" to="." method="_on_load_pressed"]
+[connection signal="pressed" from="VFlowContainer/newWorld/singlepalyer" to="." method="_on_singlepalyer_pressed"]
 [connection signal="pressed" from="VFlowContainer/Options/exit" to="." method="_on_exit_pressed"]

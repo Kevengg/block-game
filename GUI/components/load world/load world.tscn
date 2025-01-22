@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://doejsdgdrmrh4"]
+
+[ext_resource type="Script" path="res://GUI/components/load world/load world.gd" id="1_pyia6"]
+[ext_resource type="Script" path="res://GUI/components/load world/Load.gd" id="2_spgk2"]
+
+[node name="LoadWorld" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pyia6")
+
+[node name="Load" type="Button" parent="."]
+visible = false
+layout_mode = 2
+script = ExtResource("2_spgk2")
+
+[connection signal="pressed" from="Load" to="Load" method="_on_pressed"]
