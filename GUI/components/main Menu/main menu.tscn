@@ -72,7 +72,6 @@ text = "Continue"
 
 [node name="load" type="Button" parent="VFlowContainer/continue"]
 layout_mode = 2
-disabled = true
 text = "Load world"
 
 [node name="HSeparator" type="HSeparator" parent="VFlowContainer"]
@@ -134,5 +133,6 @@ size_flags_horizontal = 3
 text = "Exit"
 
 [connection signal="pressed" from="VFlowContainer/continue/continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="VFlowContainer/continue/load" to="." method="_on_load_pressed"]
 [connection signal="pressed" from="VFlowContainer/newWorld/singlepalyer" to="." method="_on_singlepalyer_pressed"]
 [connection signal="pressed" from="VFlowContainer/Options/exit" to="." method="_on_exit_pressed"]

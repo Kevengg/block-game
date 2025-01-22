@@ -39,6 +39,8 @@ func _on_continue_pressed():
 	
 
 func _on_singlepalyer_pressed():
-	var nextPage = load("res://GUI/components/new world/new world.tscn").instantiate()
-	add_sibling(nextPage)
-	queue_free()
+	Game.helpers.nextPage("res://GUI/components/new world/new world.tscn", self)
+
+
+func _on_load_pressed():
+	Game.helpers.nextPage("res://GUI/components/load world/load world.tscn", self)
