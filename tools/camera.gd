@@ -28,6 +28,7 @@ var _e = false
 var _shift = false
 var _alt = false
 
+
 func _input(event):
 	# Receives mouse motion
 	if event is InputEventMouseMotion:
@@ -62,6 +63,9 @@ func _input(event):
 				_shift = event.pressed
 			KEY_ALT:
 				_alt = event.pressed
+			KEY_I:
+				get_viewport().debug_draw = Viewport.DEBUG_DRAW_WIREFRAME
+			
 
 # Updates mouselook and movement every frame
 func _process(delta):
@@ -72,7 +76,7 @@ func _process(delta):
 func _update_movement(delta):
 	# Computes desired direction from key states
 	_direction = Vector3(
-		(_d as float) - (_a as float), 
+		(_d as float) - (_a as float),
 		(_e as float) - (_q as float),
 		(_s as float) - (_w as float)
 	)
@@ -113,4 +117,4 @@ func _update_mouselook():
 		_total_pitch += pitch
 	
 		rotate_y(deg_to_rad(-yaw))
-		rotate_object_local(Vector3(1,0,0), deg_to_rad(-pitch))
+		rotate_object_local(Vector3(1, 0, 0), deg_to_rad(-pitch))

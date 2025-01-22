@@ -7,6 +7,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_cdvgn"]
 
 [node name="block" type="MeshInstance3D"]
+visible = false
 mesh = SubResource("BoxMesh_c340n")
 
 [node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]

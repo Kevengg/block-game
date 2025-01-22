@@ -7,13 +7,13 @@
 [node name="Main" type="Node3D" node_paths=PackedStringArray("items")]
 script = ExtResource("1_x7qt0")
 items = NodePath("items")
-metadata/saveData = null
 
 [node name="items" type="Node" parent="."]
 
 [node name="characters" type="Node" parent="."]
 
 [node name="FreeLookCamera" type="Camera3D" parent="."]
+visible = false
 script = ExtResource("2_do6n1")
 
 [node name="ui" type="CanvasLayer" parent="."]

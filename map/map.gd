@@ -54,7 +54,7 @@ func getHeight(cord: Vector2i) -> int:
 func save():
 	saveData[1] = "test"
 
-## generates an vector 2 array were v[x] is height, and v[y] is block id
+## generates an vector 4 array were v[x,y,z] is coordinates, and v[w] is block id
 func genChunk(cord: Vector2i) -> Array[Vector4i]:
 	## hight based on noise
 	var height = getHeight(cord)

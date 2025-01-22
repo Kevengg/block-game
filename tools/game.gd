@@ -18,6 +18,14 @@ class json:
 			return Vector4i(int(r.get_string(1)), int(r.get_string(2)), int(r.get_string(3)), int(r.get_string(4)))
 		return null
 	
+	static func parseVector4iArray(arr: Array) -> Array[Vector4i]:
+		var returnArray: Array[Vector4i] = []
+
+		for item in arr:
+			returnArray.push_back(parseVector4i(item))
+		
+		return returnArray
+	
 	## parse a vector as string of x length to a libeary of x length FIXME not implemented
 	#static func parseVectorX(string:String, x:int, i:bool=false):
 		#pass
